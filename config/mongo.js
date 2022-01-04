@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('./config');
 const DB_URL = config.MONGO_URL;
-const loadModels = require('../app/models');
+
 
 module.exports = () => {
     const connect = () => {
@@ -25,7 +25,7 @@ module.exports = () => {
             // Prints initialization
             console.log('****************************')
             console.log('*    Starting Server 🚀')
-            console.log(`*    Graph-QL-DEMO`)
+            console.log(`*    Graph-QL-Demo`)
             console.log(`*    Port: ${config.PORT || 3000}`)
             console.log(`*    NODE_ENV: ${config.NODE_ENV}`)
             console.log(`*    MONGO: ${DB_URL}`)
@@ -39,6 +39,4 @@ module.exports = () => {
   
     mongoose.connection.on('error', console.log)
     mongoose.connection.on('disconnected', connect)
-  
-    loadModels()
   }

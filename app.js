@@ -19,19 +19,17 @@ router.get('/healthCheckapi', function (req, res) {
     res.status(200).send(data);
 });
 
-app.use('/api/v1', router);
-
 app.use(bodyParser.json({
-    limit:'20mb'
+    limit: '20mb'
 }));
 
 app.use(bodyParser.urlencoded({
-    limit:'20mb',
-    extended:true
+    limit: '20mb',
+    extended: true
 }));
 
 app.use(cors());
-app.use(require('./app/routes'));
+app.use('/api/v1', require('./app/routes'));
 app.listen(app.get('port'))
 
 initMongo();

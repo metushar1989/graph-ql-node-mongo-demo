@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     },
     department_id: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'department'
+        ref: 'department-master'
     },
     joining_date: {
         type: Date,
@@ -36,7 +36,13 @@ const userSchema = new mongoose.Schema({
             type: String,
             default: null
         }
-    }
+    },
+    status: {
+        type: String,
+        enum: ['active', 'deleted'],
+        index: true,
+        default: 'active'
+    },
 }, {
     timestamps: true
 });
